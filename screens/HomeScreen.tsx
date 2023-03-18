@@ -1,9 +1,10 @@
-import {Text, View} from "react-native";
+import {View} from "react-native";
+import PracticeList from "../components/PracticeList";
 
 function HomeScreen() {
     return (
         <View>
-            <Text>Home screen!</Text>
+            <PracticeList />
         </View>
         )
 }
