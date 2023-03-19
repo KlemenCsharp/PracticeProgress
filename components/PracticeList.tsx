@@ -1,4 +1,4 @@
-import {View, Text, FlatList} from "react-native";
+import {FlatList, View} from "react-native";
 import Practice from "./Practice";
 import practice from "./Practice";
 

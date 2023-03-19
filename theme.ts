@@ -31,6 +31,11 @@ export const theme = {
             fontFamily: 'Roboto',
             fontSize: 16,
         },
+    },
+    breakpoints: {
+        smallPhone: 0,
+        phone: 321,
+        tablet: 768
     }
 }
 
