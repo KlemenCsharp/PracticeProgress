@@ -4,7 +4,6 @@ import {StatusBar} from "expo-status-bar";
 import HomeScreen from "./screens/HomeScreen";
 import {createContext, useState} from "react";
 import {darkTheme, theme} from "./theme";
-import {Switch} from "react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +14,8 @@ export default function App() {
   return (
     <ThemeContext.Provider value={darkMode ? darkTheme : theme}>
       <StatusBar style="dark" />
-        <Switch value={darkMode} onValueChange={setDarkMode} />
+        {/*TODO: Using switch only as a test for changing themes*/}
+        {/*<Switch value={darkMode} onValueChange={setDarkMode} />*/}
       <NavigationContainer>
           <Stack.Navigator>
               <Stack.Screen name="PracticeProgress" component={HomeScreen} />
