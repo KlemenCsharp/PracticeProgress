@@ -16,7 +16,7 @@ function HomeScreen() {
     <View>
       <Button
         icon="camera"
-        mode="contained-tonal"
+        mode="elevated"
         compact
         onPress={() => onPressButton()}
       >
