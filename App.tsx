@@ -1,21 +1,28 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
-import { createContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import AppLoading from 'expo-app-loading';
+import {
+  MD3LightTheme as DefaultTheme,
+  PaperProvider,
+} from 'react-native-paper';
 import HomeScreen from './screens/HomeScreen';
-import { darkTheme, theme } from './theme';
 import { init } from './utils/database';
 
 const Stack = createNativeStackNavigator();
 
-export const ThemeContext = createContext(theme);
+const themeRP = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: 'tomato',
+    secondary: 'yellow',
+  },
+};
 
 export default function App() {
   const [dbInitialized, setDbInitialized] = useState(false);
-  // TODO: Popravi ko bos implementiral DTO-je oziroma modele
-  // eslint-disable-next-line
-  const [darkMode] = useState(false);
 
   useEffect(() => {
     init()
@@ -33,16 +40,14 @@ export default function App() {
   }
 
   return (
-    <ThemeContext.Provider value={darkMode ? darkTheme : theme}>
+    <PaperProvider theme={themeRP}>
       {/* eslint-disable-next-line react/style-prop-object */}
       <StatusBar style="dark" />
-      {/* TODO: Using switch only as a test for changing themes */}
-      {/* <Switch value={darkMode} onValueChange={setDarkMode} /> */}
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="PracticeProgress" component={HomeScreen} />
         </Stack.Navigator>
       </NavigationContainer>
-    </ThemeContext.Provider>
+    </PaperProvider>
   );
 }
